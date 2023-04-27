@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 
 const developerRoutes = require("./api/routes/developers");
+const projectsRoutes = require("./api/routes/projects");
 
 mongoose.connect(process.env.CONNECTION_STRING);
 
