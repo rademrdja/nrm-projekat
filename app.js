@@ -3,6 +3,7 @@ const app = express();
 
 const developerRoutes = require("./api/routes/developers");
 const projectsRoutes = require("./api/routes/projects");
+const usersRoutes = require("./api/routes/users");
 
 mongoose.connect(process.env.CONNECTION_STRING);
 
@@ -25,6 +26,8 @@ app.use((request, response, next) => {
 });
 
 app.use("/developers", developerRoutes);
+app.use("/projects", projectsRoutes);
+app.use("/users", usersRoutes);
 
 app.use((request, response, next) => {
   const error = new Error("Not found");
