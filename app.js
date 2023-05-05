@@ -1,18 +1,20 @@
 const express = require("express");
 const app = express();
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const developerRoutes = require("./api/routes/developers");
 const projectsRoutes = require("./api/routes/projects");
 const usersRoutes = require("./api/routes/users");
 
-mongoose.connect(process.env.CONNECTION_STRING);
+mongoose.connect("");
 
 app.use(morgan("dev"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use((request, response, next) => {
-  // preventing cors error
   response.header("Access-Control-Allow-Origin", "*");
   response.header("Access-Control-Allow-Headers", "*");
   if (request.method === "OPTIONS") {

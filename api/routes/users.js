@@ -101,7 +101,7 @@ router.post("/login", (request, response, next) => {
                 mail: user[0].mail,
                 userId: user[0]._id,
               },
-              "SECRET_KEY",
+              process.env.KEY,
               {
                 expiresIn: "1h",
               }

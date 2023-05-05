@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const auth = require("../middleware/check-auth");
 
 const Developer = require("../model/developer");
 
@@ -88,7 +89,7 @@ router.patch("/:developerId", (request, response, next) => {
     });
 });
 
-router.delete("/:developerId", (request, response, next) => {
+router.delete("/:developerId", auth, (request, response, next) => {
   const id = request.params.developerId;
   Developer.deleteOne({ _id: id })
     .exec()
